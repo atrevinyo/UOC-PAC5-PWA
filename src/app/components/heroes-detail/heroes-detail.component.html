@@ -1,0 +1,87 @@
+
+<button mat-raised-button color="primary" (click)="home()">
+    <mat-icon>arrow_back</mat-icon>
+</button>
+
+<mat-card class="mat-elevation-z4" style="text-align: center;">
+    <mat-card-title>{{ heroe.name}}</mat-card-title>
+    <mat-card-subtitle>{{ heroe.slug }}</mat-card-subtitle>
+
+    <img img mat-card-xl-image [src]= "heroe.images.lg"  alt="Photo of a Shiba Inu">
+    <mat-card-actions>
+      <button (click)="toggleShowDetails()" mat-raised-button>Show all details</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-tab-group mat-align-tabs="start"  *ngIf="showDetail">
+    <mat-tab label="Powerstats">
+     <mat-list>
+        <mat-list-item>Intelligence:
+          <mat-progress-bar color="warn" mode="determinate" [value]="heroe.powerstats.intelligence"></mat-progress-bar>
+          {{heroe.powerstats.intelligence}}
+        </mat-list-item>
+        <mat-list-item> Strength:
+          <mat-progress-bar color="warn" mode="determinate" [value]="heroe.powerstats.strength"></mat-progress-bar>
+          {{ heroe.powerstats.strength }}
+        </mat-list-item>
+
+        <mat-list-item> Speed:
+          <mat-progress-bar color="warn" mode="determinate" [value]="heroe.powerstats.speed"></mat-progress-bar>
+          {{ heroe.powerstats.speed }}
+        </mat-list-item>
+
+        <mat-list-item> Durability:
+          <mat-progress-bar color="warn" mode="determinate" [value]="heroe.powerstats.durability"></mat-progress-bar>
+          {{ heroe.powerstats.durability }}
+        </mat-list-item>
+
+        <mat-list-item> Power:
+          <mat-progress-bar color="warn" mode="determinate" [value]="heroe.powerstats.power"></mat-progress-bar>
+          {{ heroe.powerstats.power }}
+        </mat-list-item>
+
+        <mat-list-item> Combat:
+          <mat-progress-bar color="warn" mode="determinate" [value]="heroe.powerstats.combat"></mat-progress-bar>
+          {{ heroe.powerstats.combat }}
+        </mat-list-item>
+        </mat-list>
+     </mat-tab>
+
+    <mat-tab label="Appearance">
+      <div class="charInfo">
+        <p class="upper_label">Gender</p>
+        <p class="valor_propietat">{{ heroe.appearance.gender }}</p>
+        <p class="upper_label">Race</p>
+        <p class="valor_propietat">{{ heroe.appearance.race }}</p>
+        <p class="upper_label">Height</p>
+        <p class="valor_propietat">{{ heroe.appearance.height[1] }}</p>
+        <p class="upper_label">Eye Color</p>
+        <p class="valor_propietat">{{ heroe.appearance.eyeColor }}</p>
+        <p class="upper_label">Hair Color</p>
+        <p class="valor_propietat">{{ heroe.appearance.hairColor }}</p>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Biography">
+      <div class="charInfo">
+        <p class="upper_label">Full Name</p>
+        <p class="valor_propietat">{{ heroe.biography.fullName }}</p>
+        <p class="upper_label">Alter Egos</p>
+        <p class="valor_propietat">{{ heroe.biography.alterEgos }}</p>
+
+        <p class="upper_label">Place Of Birth</p>
+        <p class="valor_propietat">{{ heroe.biography.placeOfBirth }}</p>
+        <p class="upper_label">First Appearance</p>
+        <p class="valor_propietat">{{ heroe.biography.firstAppearance }}</p>
+        <p class="upper_label">Publisher</p>
+        <p class="valor_propietat">{{ heroe.biography.publisher }}</p>
+        <p class="upper_label">Alignment</p>
+        <p class="valor_propietat">{{ heroe.biography.alignment }}</p>
+        <p class="upper_label">Aliases</p>
+        <span class="valor_propietat" *ngFor="let item of heroe.biography.aliases; last as isLast">
+          {{ item }}<span class="" *ngIf="!isLast">,</span>
+        </span>
+
+      </div>
+    </mat-tab>
+  </mat-tab-group>
