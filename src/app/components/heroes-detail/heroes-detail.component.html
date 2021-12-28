@@ -3,7 +3,7 @@
     <mat-icon>arrow_back</mat-icon>
 </button>
 
-<mat-card class="mat-elevation-z4" style="text-align: center;">
+<mat-card *ngIf="heroe" class="mat-elevation-z4" style="text-align: center;">
     <mat-card-title>{{ heroe.name}}</mat-card-title>
     <mat-card-subtitle>{{ heroe.slug }}</mat-card-subtitle>
 

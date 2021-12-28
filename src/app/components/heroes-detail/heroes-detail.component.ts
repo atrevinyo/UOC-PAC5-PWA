@@ -20,17 +20,13 @@ export class HeroesDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const identifer = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log('Indentifier -->', identifer);
 
     this.heroesService.getHeroeById(identifer!).subscribe((heroe: Heroe) => {
-
       if (!heroe) {
        return this.router.navigateByUrl('/');
       }
-
-      console.log('Heroe-->', heroe);
+      
       return this.heroe = heroe;
-
     });
   }
 
